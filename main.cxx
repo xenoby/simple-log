@@ -1,22 +1,57 @@
 #include <iostream>
+#include <thread>
 
 #include "simple-log.hxx"
 
+void task_one();
+void task_two();
+
 int main()
 {
-    tools::xout.log(CRITICAL) << "[Render]: wglCreateContext() failed!\n";
-    tools::xout.update();
+    
+    std::thread thread_a(task_one);
+    std::thread thread_b(task_two);
+
+    unsigned i = 1;
+    
+    while(true)
+    {   
+        tools::xout.log(NONE) << "somebody message! just for fun"; Sleep(360 * i);
+        tools::xout.log(LOG) << "LOG!"; Sleep(360 * i);
+        i++;
+        tools::xout.log(DEBUG) << "DEBUG!"; Sleep(360 * i);
+        i++;
+        tools::xout.log(INFO) << "INFO!"; Sleep(360 * i);
+        i++;
+        tools::xout.log(WARNING) << "WARNING!"; Sleep(360 * i);
+        i++;
+        tools::xout.log(CRITICAL) << "CRITICAL!"; Sleep(360 * i);
+        i++;
+        tools::xout.log(ERRORS) << "ERRORS!"; Sleep(360 * i);
+        i = 1;
+    }
+
+    thread_a.join();
+    thread_b.join();
+
+    return 0;
 }
 
+void task_one()
+{
+    while (true)
+    {
+        tools::xout.log(NONE) << "somebody message from thread one!";
+        std::this_thread::sleep_for(std::chrono::seconds(9));
+    }
+    
+}
 
-/*
-https://github.com/sapozhnikov/keeper/blob/master/keeper/ConsoleLogger.h
-https://stackoverflow.com/questions/17595957/operator-overloading-in-c-for-logging-purposes
-https://github.com/Manu343726/Cpp11CustomLogClass/blob/master/Log.h
-https://stackoverflow.com/questions/3709389/overloading-operator-in-c
-https://sohabr.net/post/174757/?ysclid=ljnuo5no6v137828603
-https://habr.com/ru/articles/532698/
-https://www.geeksforgeeks.org/implement-thread-safe-queue-in-c/
-https://stackoverflow.com/questions/15278343/c11-thread-safe-queue
-
-*/
+void task_two()
+{
+    while (true)
+    {
+        tools::xout.log(LOG) << "thread two is working!"; 
+        std::this_thread::sleep_for(std::chrono::seconds(18));
+    }
+}
