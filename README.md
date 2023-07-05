@@ -6,6 +6,7 @@ The file name changes automatically when the date changes.
 You can add messages from different streams.
 
 An example of usage is in main.cxx
+it works under windows and linux
 
 Простой логер который позволяет выводить сообщения об ошибках в консоль,
 так же позволяет записывать сообщения в файл.
@@ -14,3 +15,4 @@ An example of usage is in main.cxx
 Можно добавлять сообщения из разных потоков.
 
 Пример использования находится в main.cxx
+Это работает под  windows и linux
