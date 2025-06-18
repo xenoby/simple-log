@@ -1,3 +1,4 @@
+![alt text](img/img.png)
 # simple-log
 A simple logger that allows you to output error messages to the console,
 also allows you to write messages to a file.
