@@ -1,4 +1,4 @@
-![alt text](img/img.png)
+![alt text](https://github.com/xenoby/simple-log/tree/main/img/img.png?raw=true)
 # simple-log
 A simple logger that allows you to output error messages to the console,
 also allows you to write messages to a file.
